@@ -1,5 +1,5 @@
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, classification_report
+from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, classification_report, roc_curve
 
 
 def grid_search_kfold_cv(X_train, y_train, X_test, y_test, model_class, param_grid: dict, metric='f1', cv=3, eval=True, random_state=42,verbose=3):
@@ -58,6 +58,18 @@ def evaluate_model(model, X_train, y_train, X_test, y_test):
     }
     return result
 
+def plot_roc_curve(y_test, y_pred):
+    """
+    Plots the ROC curve
+    :param y_test: test labels
+    :param y_pred: predicted labels
+    """
+    fpr, tpr, thresholds = roc_curve(y_test, y_pred)
+    plt.plot(fpr, tpr)
+    plt.xlabel('False positive rate')
+    plt.ylabel('True positive rate')
+    plt.title('ROC curve')
+    plt.show()
 
 from itertools import product
 
