@@ -2,7 +2,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, classification_report
 
 
-def grid_search_kfold_cv(X_train, y_train, X_test, y_test, model_class, param_grid: dict, metric='f1', cv=3, eval=True, random_state=42):
+def grid_search_kfold_cv(X_train, y_train, X_test, y_test, model_class, param_grid: dict, metric='f1', cv=3, eval=True, random_state=42,verbose=3):
     """
     Grid search and evaluation of the model
     :param X_train: Training set
@@ -19,7 +19,7 @@ def grid_search_kfold_cv(X_train, y_train, X_test, y_test, model_class, param_gr
     :return: best_params if evaluate_model ==False, else best_params, best_model and results on the text set (dictionary with fields
     accuracy, confusion_matrix and classification_report)
     """
-    grid = GridSearchCV(param_grid=param_grid, scoring=metric, cv=cv, estimator=model_class(random_state=random_state))
+    grid = GridSearchCV(param_grid=param_grid, scoring=metric, cv=cv, estimator=model_class(random_state=random_state), verbose=verbose)
     grid.fit(X_train, y_train)
     best_params = grid.best_params_
 
