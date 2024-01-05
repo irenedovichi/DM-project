@@ -79,3 +79,13 @@ rf3,"[[21180  2169]
    macro avg       0.75      0.71      0.72     32310
 weighted avg       0.79      0.80      0.79     32310
 "
+nn3,"[[20900  2449]
+ [ 4443  4518]]","              precision    recall  f1-score   support
+
+       False       0.82      0.90      0.86     23349
+        True       0.65      0.50      0.57      8961
+
+    accuracy                           0.79     32310
+   macro avg       0.74      0.70      0.71     32310
+weighted avg       0.78      0.79      0.78     32310
+"
